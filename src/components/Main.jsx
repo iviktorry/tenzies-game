@@ -16,14 +16,14 @@ export default function Main() {
           current value between rolls.
         </p>
       </div>
-      <section className="grid grid-cols-2 gap-y-4 gap-x-12 sm:gap-8 sm:grid-cols-5 ">
+      <section className="grid grid-cols-2 gap-y-6 gap-x-10 sm:gap-x-6 sm: sm:grid-cols-5 ">
         {Array.from({ length: 10 }).map((_, index) => (
           <DiceButton key={index + 1} number={randomNumber} />
         ))}
       </section>
       <button
         onClick={handleClick}
-        className="px-8 py-2 rounded-md shadow-md shadow-neutral-400 font-semibold text-white bg-indigo-600"
+        className="px-12 py-3 rounded-md shadow-md shadow-neutral-400 font-semibold text-white bg-indigo-600"
       >
         Roll
       </button>
