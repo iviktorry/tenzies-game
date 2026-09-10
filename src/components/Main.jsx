@@ -11,16 +11,10 @@ export default function Main() {
         </p>
       </div>
       <section className="grid grid-cols-2 gap-y-4 gap-x-12 sm:gap-8 sm:grid-cols-5 ">
-        <DiceButton number="1" />
-        <DiceButton number="2" />
-        <DiceButton number="3" />
-        <DiceButton number="4" />
-        <DiceButton number="5" />
-        <DiceButton number="6" />
-        <DiceButton number="1" />
-        <DiceButton number="2" />
-        <DiceButton number="3" />
-        <DiceButton number="4" />
+        {Array.from({ length: 10 }).map((_, index) => (
+          <DiceButton key={index + 1} number={index + 1} />
+        ))}
+        {}
       </section>
       <button className="px-8 py-2 rounded-md shadow-md shadow-neutral-400 font-semibold text-white bg-indigo-600">
         Roll
