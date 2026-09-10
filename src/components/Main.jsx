@@ -2,9 +2,13 @@ import { useState } from "react";
 import DieButton from "./DieButton";
 
 export default function Main() {
-  const [randomNumber, setRandomNumber] = useState(0);
-  function handleClick() {
-    setRandomNumber(Math.floor(Math.random() * 6));
+  const [randomNumbers, setRandomNumbers] = useState(generateRandomNumbers());
+
+  function generateRandomNumbers() {
+    return Array.from({ length: 10 }, () => Math.ceil(Math.random() * 6));
+  }
+  function rollDice() {
+    setRandomNumbers(generateRandomNumbers());
   }
 
   return (
@@ -17,12 +21,12 @@ export default function Main() {
         </p>
       </div>
       <section className="grid grid-cols-2 gap-y-6 gap-x-10 sm:gap-x-6 sm: sm:grid-cols-5 ">
-        {Array.from({ length: 10 }).map((_, index) => (
-          <DieButton key={index + 1} number={randomNumber} />
+        {randomNumbers.map((item, index) => (
+          <DieButton key={index + 1} number={item} />
         ))}
       </section>
       <button
-        onClick={handleClick}
+        onClick={rollDice}
         className="px-12 py-3 rounded-md shadow-md shadow-neutral-400 font-semibold text-white bg-indigo-600"
       >
         Roll
