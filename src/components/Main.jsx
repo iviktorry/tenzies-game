@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DiceButton from "./DiceButton";
+import DieButton from "./DieButton";
 
 export default function Main() {
   const [randomNumber, setRandomNumber] = useState(0);
@@ -18,7 +18,7 @@ export default function Main() {
       </div>
       <section className="grid grid-cols-2 gap-y-6 gap-x-10 sm:gap-x-6 sm: sm:grid-cols-5 ">
         {Array.from({ length: 10 }).map((_, index) => (
-          <DiceButton key={index + 1} number={randomNumber} />
+          <DieButton key={index + 1} number={randomNumber} />
         ))}
       </section>
       <button
