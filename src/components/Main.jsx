@@ -1,14 +1,31 @@
 import { useState } from "react";
 import DieButton from "./DieButton";
+import { nanoid } from "nanoid";
 
 export default function Main() {
   const [randomNumbers, setRandomNumbers] = useState(generateRandomNumbers());
 
   function generateRandomNumbers() {
-    return Array.from({ length: 10 }, () => Math.ceil(Math.random() * 6));
+    return Array.from({ length: 10 }, () => ({
+      id: nanoid(),
+      value: Math.ceil(Math.random() * 6),
+      isSelected: false,
+    }));
   }
   function rollDice() {
     setRandomNumbers(generateRandomNumbers());
+  }
+
+  function handleClick(event) {
+    const elementId = event.currentTarget.id;
+    setRandomNumbers((prev) =>
+      prev.map((item) => {
+        if (item.id === elementId) {
+          return { ...item, isSelected: !item.isSelected };
+        }
+        return item;
+      }),
+    );
   }
 
   return (
@@ -21,8 +38,14 @@ export default function Main() {
         </p>
       </div>
       <section className="grid grid-cols-2 gap-y-6 gap-x-10 sm:gap-x-6 sm: sm:grid-cols-5 ">
-        {randomNumbers.map((item, index) => (
-          <DieButton key={index + 1} number={item} />
+        {randomNumbers.map((item) => (
+          <DieButton
+            key={item.id}
+            id={item.id}
+            number={item.value}
+            isSelected={item.isSelected}
+            handleClick={handleClick}
+          />
         ))}
       </section>
       <button
