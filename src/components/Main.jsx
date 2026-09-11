@@ -16,15 +16,11 @@ export default function Main() {
     setRandomNumbers(generateRandomNumbers());
   }
 
-  function handleClick(event) {
-    const elementId = event.currentTarget.id;
+  function handleClick(id) {
     setRandomNumbers((prev) =>
-      prev.map((item) => {
-        if (item.id === elementId) {
-          return { ...item, isSelected: !item.isSelected };
-        }
-        return item;
-      }),
+      prev.map((item) =>
+        item.id === id ? { ...item, isSelected: !item.isSelected } : item,
+      ),
     );
   }
 
@@ -41,10 +37,9 @@ export default function Main() {
         {randomNumbers.map((item) => (
           <DieButton
             key={item.id}
-            id={item.id}
             number={item.value}
             isSelected={item.isSelected}
-            handleClick={handleClick}
+            handleClick={() => handleClick(item.id)}
           />
         ))}
       </section>
