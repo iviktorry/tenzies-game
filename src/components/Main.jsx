@@ -33,7 +33,7 @@ export default function Main() {
   function handleClick(id) {
     setRandomNumbers((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, isSelected: true } : item,
+        item.id === id ? { ...item, isSelected: !item.isSelected } : item,
       ),
     );
   }
