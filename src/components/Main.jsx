@@ -13,7 +13,13 @@ export default function Main() {
     }));
   }
   function rollDice() {
-    setRandomNumbers(generateRandomNumbers());
+    setRandomNumbers((prev) =>
+      prev.map((item) =>
+        item.isSelected
+          ? item
+          : { ...item, value: Math.ceil(Math.random() * 6) },
+      ),
+    );
   }
 
   function handleClick(id) {
