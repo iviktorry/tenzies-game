@@ -4,8 +4,6 @@ import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 
 export default function Main() {
-  const [randomNumbers, setRandomNumbers] = useState(generateRandomNumbers());
-
   function generateRandomNumbers() {
     return Array.from({ length: 10 }, () => ({
       id: nanoid(),
@@ -14,14 +12,22 @@ export default function Main() {
     }));
   }
 
+  const [randomNumbers, setRandomNumbers] = useState(() =>
+    generateRandomNumbers(),
+  );
+
   function rollDice() {
-    setRandomNumbers((prev) =>
-      prev.map((item) =>
-        item.isSelected
-          ? item
-          : { ...item, value: Math.ceil(Math.random() * 6) },
-      ),
-    );
+    if (!gameWon) {
+      setRandomNumbers((prev) =>
+        prev.map((item) =>
+          item.isSelected
+            ? item
+            : { ...item, value: Math.ceil(Math.random() * 6) },
+        ),
+      );
+    } else {
+      setRandomNumbers(generateRandomNumbers());
+    }
   }
 
   function handleClick(id) {
@@ -57,7 +63,6 @@ export default function Main() {
         ))}
       </section>
       <button
-        // onClick={newGame ? rollDice : setRandomNumbers(generateRandomNumbers())}
         onClick={rollDice}
         className="px-12 py-3 rounded-md shadow-md shadow-neutral-400 font-semibold text-white bg-indigo-600"
       >
