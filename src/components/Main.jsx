@@ -46,6 +46,13 @@ export default function Main() {
     <main className="px-6 py-10 flex flex-col gap-8 items-center text-center text-xl  sm:m-auto sm:rounded-2xl sm:max-w-lg bg-neutral-100 ">
       <div className="flex flex-col items-center">
         {gameWon && <Confetti />}
+        <div aria-label="polite">
+          {gameWon && (
+            <p className="sr-only">
+              Congratulation! You won! Press "New game" to start again
+            </p>
+          )}
+        </div>
         <h1 className="font-semibold text-4xl">Tenzies</h1>
         <p className="sm:max-w-[80%]">
           Roll until all dice are the same. Click each die to freeze it at its
