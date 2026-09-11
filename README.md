@@ -1,16 +1,46 @@
-# React + Vite
+# 🎲 Tenzies Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and fast-paced interactive dice game built with React, Tailwind CSS, and `react-confetti`. Roll until all dice are the same, freezing your target numbers along the way!
 
-Currently, two official plugins are available:
+![screenshot of interface](./src/assets/screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🔗 Links
 
-## React Compiler
+- **Live Site:** [View Live Demo](https://tenzies-game-lake-seven.vercel.app/) 
+- **GitHub Repository:** [View Source Code](https://github.com/iviktorry/tenzies-game) 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** — Declarative UI, state management, and derived states
+- **Tailwind CSS** — Utility-first styling with responsive design
+- **nanoid** — Unique key generation for list rendering
+- **react-confetti** — Celebratory particle effects upon winning
+- **Vite** — High-performance frontend build tooling
+
+---
+
+## ✨ Features
+
+- **Interactive Dice Freezing:** Click individual dice to hold or release them between rolls.
+- **Smart Re-rolling:** Only unheld dice are regenerated when you click "Roll".
+- **Instant Win Detection:** Automatically evaluates if all 10 dice are selected and share the exact same value.
+- **Victory Celebration:** Triggers a confetti animation and changes the action button to "New Game".
+- **Responsive Layout:** Optimized grid layout scaling seamlessly from mobile to desktop screens.
+
+---
+
+## 🧠 What I Learned & Practiced
+
+- **State Immutability:** Updating specific items within arrays using `.map()` and object spread syntax (`...item`).
+- **Derived State:** Computing victory conditions (`gameWon`) dynamically on every render instead of syncing redundant state.
+- **Lazy State Initialization:** Passing callback functions into `useState` to optimize performance and prevent unnecessary initial recalculations.
+- **Component Communication:** Passing identifier callbacks down to child components to maintain clean encapsulation without relying on raw DOM events.
+
+---
+
+## 🙋‍♀️ Author
+
+- GitHub — [@iviktorry](https://github.com/iviktorry)
+- Frontend Mentor — [@iviktorry](https://www.frontendmentor.io/profile/iviktorry)
