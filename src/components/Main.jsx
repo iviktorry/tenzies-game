@@ -12,6 +12,7 @@ export default function Main() {
       isSelected: false,
     }));
   }
+
   function rollDice() {
     setRandomNumbers((prev) =>
       prev.map((item) =>
@@ -25,9 +26,16 @@ export default function Main() {
   function handleClick(id) {
     setRandomNumbers((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, isSelected: !item.isSelected } : item,
+        item.id === id ? { ...item, isSelected: true } : item,
       ),
     );
+  }
+
+  if (
+    randomNumbers.every((item) => item.isSelected) &&
+    randomNumbers.every((item) => item.value === randomNumbers[0].value)
+  ) {
+    console.log("game won");
   }
 
   return (
