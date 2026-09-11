@@ -64,7 +64,7 @@ export default function Main() {
       </section>
       <button
         onClick={rollDice}
-        className="px-12 py-3 rounded-md shadow-md shadow-neutral-400 font-semibold text-white bg-indigo-600"
+        className="px-12 py-3 rounded-md shadow-md shadow-neutral-400 font-semibold text-white bg-yellow-800"
       >
         {gameWon ? "New game" : "Roll"}
       </button>
