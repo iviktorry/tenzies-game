@@ -67,7 +67,7 @@ export default function Main() {
           current value between rolls.
         </p>
       </div>
-      <section className="grid grid-cols-2 gap-y-6 gap-x-10 sm:gap-x-6 sm: sm:grid-cols-5 ">
+      <section className="grid grid-cols-2 gap-y-5 gap-x-10 sm:gap-x-6 sm: sm:grid-cols-5 ">
         {randomNumbers.map((item) => (
           <DieButton
             key={item.id}
@@ -81,7 +81,7 @@ export default function Main() {
         onClick={rollDice}
         ref={buttonRef}
         value={gameWon ? "New game" : "Roll"}
-        className="px-12 py-3 rounded-md shadow-md shadow-neutral-400 font-semibold text-white bg-yellow-800"
+        className="w-38 py-3 rounded-md shadow-md shadow-neutral-400 font-semibold text-white bg-yellow-800"
       >
         {gameWon ? "New game" : "Roll"}
       </button>
