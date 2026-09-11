@@ -7,8 +7,7 @@ export default function Main() {
   function generateRandomNumbers() {
     return Array.from({ length: 10 }, () => ({
       id: nanoid(),
-      //   value: Math.ceil(Math.random() * 6),
-      value: 5,
+      value: Math.ceil(Math.random() * 6),
       isSelected: false,
     }));
   }
