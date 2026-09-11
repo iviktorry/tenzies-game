@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DieButton from "./DieButton";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
@@ -7,7 +7,8 @@ export default function Main() {
   function generateRandomNumbers() {
     return Array.from({ length: 10 }, () => ({
       id: nanoid(),
-      value: Math.ceil(Math.random() * 6),
+      //   value: Math.ceil(Math.random() * 6),
+      value: 5,
       isSelected: false,
     }));
   }
@@ -15,6 +16,18 @@ export default function Main() {
   const [randomNumbers, setRandomNumbers] = useState(() =>
     generateRandomNumbers(),
   );
+
+  const gameWon =
+    randomNumbers.every((item) => item.isSelected) &&
+    randomNumbers.every((item) => item.value === randomNumbers[0].value);
+
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    if (gameWon) {
+      buttonRef.current.focus();
+    }
+  }, [gameWon]);
 
   function rollDice() {
     if (!gameWon) {
@@ -37,10 +50,6 @@ export default function Main() {
       ),
     );
   }
-
-  const gameWon =
-    randomNumbers.every((item) => item.isSelected) &&
-    randomNumbers.every((item) => item.value === randomNumbers[0].value);
 
   return (
     <main className="px-6 py-10 flex flex-col gap-8 items-center text-center text-xl  sm:m-auto sm:rounded-2xl sm:max-w-lg bg-neutral-100 ">
@@ -71,6 +80,8 @@ export default function Main() {
       </section>
       <button
         onClick={rollDice}
+        ref={buttonRef}
+        value={gameWon ? "New game" : "Roll"}
         className="px-12 py-3 rounded-md shadow-md shadow-neutral-400 font-semibold text-white bg-yellow-800"
       >
         {gameWon ? "New game" : "Roll"}
